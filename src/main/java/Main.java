@@ -6,6 +6,12 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        int[] minuend = {1, 2, 3, 1};
+        int[] subtrahend = {1, 1, 1};
+        int[] result = calculateSub(minuend, subtrahend);
+        for (int i = 0; i < result.length; i++) {
+            System.out.println(result[i]);
+        }
 
     }
     //    Задание № 1
@@ -37,5 +43,20 @@ public class Main {
             }
         }
         return count;
+    }
+
+    //    Задание № 3
+    //    Реализуйте метод, принимающий в качестве аргументов два целочисленных массива, и
+    //    возвращающий новый массив, каждый элемент которого равен разности элементов двух входящих массивов в той же ячейке.
+    //    Если длины массивов не равны, необходимо как-то оповестить пользователя.
+    public static int[] calculateSub(int[] minuend, int[] subtrahend) {
+        if (minuend.length != subtrahend.length) {
+            throw new RuntimeException("Размеры вычитаемых массивов не равны");
+        }
+        int[] result = new int[minuend.length];
+        for (int i = 0; i < result.length; i++) {
+            result[i] = minuend[i] - subtrahend[i];
+        }
+        return result;
     }
 }
