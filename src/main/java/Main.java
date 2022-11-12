@@ -6,13 +6,6 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        int[] minuend = {1, 2, 3, 1};
-        int[] subtrahend = {1, 1, 1};
-        int[] result = calculateSub(minuend, subtrahend);
-        for (int i = 0; i < result.length; i++) {
-            System.out.println(result[i]);
-        }
-
     }
     //    Задание № 1
     //    Реализуйте 3 метода, чтобы в каждом из них получить разные исключения
@@ -56,6 +49,34 @@ public class Main {
         int[] result = new int[minuend.length];
         for (int i = 0; i < result.length; i++) {
             result[i] = minuend[i] - subtrahend[i];
+        }
+        return result;
+    }
+
+    //    Задание № 4
+    //    Реализуйте метод, принимающий в качестве аргументов два целочисленных массива, и
+    //    возвращающий новый массив, каждый элемент которого равен частному элементов двух входящих массивов в той же ячейке.
+    //    Если длины массивов не равны, необходимо как-то оповестить пользователя.
+    //    Важно: При выполнении метода единственное исключение, которое пользователь может увидеть - RuntimeException, т.е. ваше.
+
+    public static Double[] calculateDiv(Integer[] dividend, Integer[] divisor) {
+        // Т.к. по условию исключение должно возникать только при несоответствии длин массивов
+        // При передаче в метод значения null, исключения не возникнет
+        if (dividend == null || divisor == null) {
+            return null;
+        }
+        if (dividend.length != divisor.length) {
+            throw new RuntimeException("Размеры вычитаемых массивов не равны");
+        }
+        Double[] result = new Double[dividend.length];
+        for (int i = 0; i < result.length; i++) {
+            // Если элемент невозможно вычислить - заполняем значением null
+            // По условию задачи исключение не выбрасываем
+            if (dividend[i] == null || divisor[i] == null || divisor[i] == 0) {
+                result[i] = null;
+            } else {
+                result[i] = Double.valueOf(dividend[i]) / Double.valueOf(divisor[i]);
+            }
         }
         return result;
     }
